@@ -1,0 +1,263 @@
+{
+	"menu": [
+		{
+			"category_id": 1,
+			"category_name": "Starter Vegetarian",
+			"category_desc": "",
+			"sub_categories": [],
+			"category_items": [
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 1,
+							"value": "150",
+							"desc": ""
+						}
+					],
+					"id": 1,
+					"name": "Paneer Tikka",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 2,
+							"value": "150",
+							"desc": ""
+						}
+					],
+					"id": 2,
+					"name": "Dahi ke kebab",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 3,
+							"value": "140",
+							"desc": ""
+						}
+					],
+					"id": 3,
+					"name": "Tandoori Aloo",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 4,
+							"value": "160",
+							"desc": ""
+						}
+					],
+					"id": 4,
+					"name": "Bharwa Mushroom",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 5,
+							"value": "160",
+							"desc": ""
+						}
+					],
+					"id": 5,
+					"name": "Veg seekh kebab",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 6,
+							"value": "165",
+							"desc": ""
+						}
+					],
+					"id": 6,
+					"name": "Haryali Paneer Tikka",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 7,
+							"value": "300",
+							"desc": ""
+						}
+					],
+					"id": 7,
+					"name": "Veg kebab platter",
+					"desc": ""
+				}
+			]
+		},
+		{
+			"category_id": 2,
+			"category_name": "Starter Non-Vegetarian",
+			"category_desc": "",
+			"sub_categories": [],
+			"category_items": [
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 8,
+							"value": "170",
+							"desc": ""
+						},
+						{
+							"id": 9,
+							"value": "290",
+							"desc": ""
+						}
+					],
+					"id": 8,
+					"name": "Tandoori Chicken",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 10,
+							"value": "180",
+							"desc": ""
+						},
+						{
+							"id": 11,
+							"value": "310",
+							"desc": ""
+						}
+					],
+					"id": 9,
+					"name": "Creamy afghani chicken",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 12,
+							"value": "210",
+							"desc": ""
+						}
+					],
+					"id": 10,
+					"name": "Chicken Malai Tikka",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 13,
+							"value": "200",
+							"desc": ""
+						}
+					],
+					"id": 11,
+					"name": "Chicken Lasuni Tikka",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 14,
+							"value": "200",
+							"desc": ""
+						}
+					],
+					"id": 12,
+					"name": "Chicken Achari Tikka",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 15,
+							"value": "200",
+							"desc": ""
+						}
+					],
+					"id": 13,
+					"name": "Chicken Tikka",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 16,
+							"value": "180",
+							"desc": ""
+						}
+					],
+					"id": 14,
+					"name": "Mutton Seekh Kebab",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 17,
+							"value": "180",
+							"desc": ""
+						}
+					],
+					"id": 15,
+					"name": "Chicken Seekh Kebab",
+					"desc": ""
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 18,
+							"value": "300",
+							"desc": ""
+						}
+					],
+					"id": 16,
+					"name": "Tandoori Pomfret",
+					"desc": "(2 Pieces - Seasonal)"
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 19,
+							"value": "300",
+							"desc": ""
+						}
+					],
+					"id": 17,
+					"name": "Ajwaini Machhi",
+					"desc": "(4 Pieces - Seasonal)"
+				},
+				{
+					"image_url": "",
+					"prices": [
+						{
+							"id": 20,
+							"value": "400",
+							"desc": ""
+						}
+					],
+					"id": 18,
+					"name": "Non Veg Kebab Platter"
+				}
+			]
+		}
+	]
+}
