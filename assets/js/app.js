@@ -24,9 +24,9 @@ require.config({
 Base.modules = ['standalone'];
 
 if (Base.ENV == "local") {
-    require.config({
-        urlArgs: "bust=" + (new Date()).getTime()
-    });
+    //require.config({
+        //urlArgs: "bust=" + (new Date()).getTime()
+    //});
 }
 /**
  *  MERGING CONFIGURATIONS BASED ON DEPENDENCY (ENVIRONMENT)
