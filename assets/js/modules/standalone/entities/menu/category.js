@@ -1,4 +1,4 @@
-define(['base', Base.appBasePath + 'modules/standalone/entities/menu/item'],function(Munch, Item){
+define(['base', Base.appBasePath + 'modules/standalone/entities/menu/item.js'],function(Munch, Item){
     var categoryModel = Munch.Model.extend({
         initialize: function(response) {
             if(response["sub_categories"].length) {
