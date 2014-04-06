@@ -16,7 +16,7 @@
     <script type="text/javascript">
         <?php
             $env =  getenv('APPLICATION_ENV');
-            if(!empty($env)){
+            if(empty($env)){
                 $env = 'local';
             }
         ?>
