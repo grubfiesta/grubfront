@@ -1,4 +1,3 @@
-Options Indexes MultiViews +FollowSymLinks
 RewriteEngine On
 # Check if the request is not from other server
 #RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?hb-local.com [NC]
