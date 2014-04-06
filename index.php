@@ -20,7 +20,7 @@
                 $env = 'local';
             }
         ?>
-        Base.ENV = typeof window["ENV"] != "undefined" ? window["ENV"]: "<?php echo $env ?>";
+        window.ENV = typeof window["ENV"] != "undefined" ? window["ENV"]: "<?php echo $env ?>";
     </script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
