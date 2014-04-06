@@ -6,7 +6,7 @@ window.Base = window.Base || {};
 Base.ENV = typeof window["ENV"] != "undefined" ? window["ENV"]:'local';
 Base.appBasePath = "/assets/js/";
 require.config({
-    baseUrl: "/assets/js",
+    //baseUrl: "/assets/js",
     paths: {
         'base': Base.appBasePath  + 'plugins/base',
         'base-web': Base.appBasePath  + 'plugins/base-web'
@@ -24,9 +24,9 @@ require.config({
 Base.modules = ['standalone'];
 
 if (Base.ENV == "local") {
-    //require.config({
-        //urlArgs: "bust=" + (new Date()).getTime()
-    //});
+    require.config({
+        urlArgs: "bust=" + (new Date()).getTime()
+    });
 }
 /**
  *  MERGING CONFIGURATIONS BASED ON DEPENDENCY (ENVIRONMENT)

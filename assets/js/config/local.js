@@ -1,7 +1,7 @@
 define([], function () {
     return {
         require: {
-            baseUrl: "/",
+            //baseUrl: "/",
             waitSeconds: 300,
             paths: {
                 'jquery': Base.appBasePath  + 'libs/jquery-2.1.0.min',

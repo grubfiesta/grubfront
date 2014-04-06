@@ -140,7 +140,7 @@ define(['backbone', 'backbone-query', 'jstorage'], function (Backbone, Backbone_
             }
             var router = this;
             router.layoutLoading = $.Deferred();
-            require([ Base.appBasePath + 'layouts/' + name + ".js"], function (layout) {
+            require([ Base.appBasePath + 'layouts/' + name ], function (layout) {
                 var layout = new layout();
                 layout.render(router);
             });
@@ -343,7 +343,7 @@ define(['backbone', 'backbone-query', 'jstorage'], function (Backbone, Backbone_
         _.each(controllers, function (cont) {
             var module = cont.module,
                 controller_name = cont.name;
-            paths.push( Base.appBasePath + 'modules/' + module + "/controllers/" + controller_name + ".js");
+            paths.push( Base.appBasePath + 'modules/' + module + "/controllers/" + controller_name );
         });
         require(paths, function () {
             var returnData = [];
@@ -447,7 +447,7 @@ define(['backbone', 'backbone-query', 'jstorage'], function (Backbone, Backbone_
             if (vie["removeOld"]) {
                 Base.deleteView(vie);
             }
-            paths.push( Base.appBasePath + 'modules/' + module + "/views/" + view_name + ".js");
+            paths.push( Base.appBasePath + 'modules/' + module + "/views/" + view_name );
         });
         require(paths, function () {
             var returnData = [];
@@ -554,7 +554,7 @@ define(['backbone', 'backbone-query', 'jstorage'], function (Backbone, Backbone_
             if (mod["removeOld"]) {
                 Base.deleteModel(mod);
             }
-            paths.push(Base.appBasePath + 'modules/' + module + "/entities/" + model_name + ".js");
+            paths.push(Base.appBasePath + 'modules/' + module + "/entities/" + model_name );
         });
         require(paths, function () {
             var returnData = [];
@@ -641,7 +641,7 @@ define(['backbone', 'backbone-query', 'jstorage'], function (Backbone, Backbone_
             if (col["removeOld"]) {
                 Base.deleteCollection(col);
             }
-            paths.push(Base.appBasePath + 'modules/' + module + "/entities/" + collection_name + ".js");
+            paths.push(Base.appBasePath + 'modules/' + module + "/entities/" + collection_name );
         });
         require(paths, function () {
             var returnData = [];
