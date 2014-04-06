@@ -64,7 +64,7 @@ Base.transInterval = setInterval(function () {
     }
 }, 100);
 
-require(['config/' + Base.ENV + ".js"], function (conf) {
+require([Base.appBasePath +  'config/' + Base.ENV + ".js"], function (conf) {
     Base.config = conf;
     /**
      * Check if the dependentENV is a defined or not! If yes then loop it for merging
