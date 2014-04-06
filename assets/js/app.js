@@ -64,7 +64,7 @@ Base.transInterval = setInterval(function () {
     }
 }, 100);
 
-require(['config/' + Base.ENV], function (conf) {
+require(['config/' + Base.ENV + ".js"], function (conf) {
     Base.config = conf;
     /**
      * Check if the dependentENV is a defined or not! If yes then loop it for merging
@@ -72,7 +72,7 @@ require(['config/' + Base.ENV], function (conf) {
     if (typeof conf.dependentENV == 'object') {
         Base.transLimit = conf.dependentENV.length;
         for (var i = 0; i < Base.transLimit; i++) {
-            require(['config/' + conf.dependentENV[i]], function (depConf) {
+            require(['config/' + conf.dependentENV[i]  + ".js"], function (depConf) {
                 Base.envTransmitted++;
                 Base.config = Base.merge(Base.config, depConf);
             });
@@ -101,7 +101,7 @@ Base.loadModules = function (modules, def) {
     var paths = [];
     Base.RouterStack = [];
     for (var i = 0; i < modules.length; i++) {
-        var modPath = Base.appBasePath + 'modules/' + modules[i] + "/router";
+        var modPath = Base.appBasePath + 'modules/' + modules[i] + "/router" + ".js";
         paths.push(modPath);
     }
     require(paths, function () {
