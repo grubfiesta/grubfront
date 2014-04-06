@@ -90,4 +90,155 @@ define(['base'],function(Base){
         strCodedParams = strCodedParams.substring(0, strCodedParams.length - 1);
         return strCodedParams;
     };
+    Base.$window = $(window);
+    Base.$document = $(document);
+    Base.windowLastScrollTop = Base.$window.scrollTop();
+    Base.windowScrolledUp = false;
+    Base.$window.on('scroll',function(){
+        var windowScrollTop = Base.$window.scrollTop();
+        if (windowScrollTop > Base.windowLastScrollTop){
+            Base.windowScrolledUp = false;
+        } else {
+            Base.windowScrolledUp = true;
+        }
+        Base.windowLastScrollTop = windowScrollTop;
+    });
+    Base.initWindow = function(){
+        Base.windowHeight = Base.$window.height();
+        Base.documentHeight = Base.$document.height();
+    };
+    Base.initWindow();
+    Base.$window.on('resize',function(){
+        Base.initWindow();
+    });
+    Base.previousDocumentHeight = Base.$document.height();
+    setInterval(function(){
+        var currentDocumentHeight = Base.$document.height();
+        if(currentDocumentHeight != Base.previousDocumentHeight){
+            Base.initWindow();
+            Base.previousDocumentHeight = currentDocumentHeight;
+            Base.trigger('change:document-height');
+        }
+    },100);
+
+    Base.hashString = function(string){
+        if (Array.prototype.reduce){
+            return string.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
+        }
+        var hash = 0;
+        if (string.length === 0) return hash;
+        for (var i = 0; i < string.length; i++) {
+            var character  = string.charCodeAt(i);
+            hash  = ((hash<<5)-hash)+character;
+            hash = hash & hash; // Convert to 32bit integer
+        }
+        return hash;
+    }
+    Base.manageScroll = function(options){
+        var selector = typeof options['selector'] != 'undefined'? options['selector']:false;
+        var $element = $(selector);
+        if(!selector || typeof selector != 'string'|| !$element.length){
+            return false;
+        }
+        var initialTop = $element.offset().top;
+        var topStop = typeof options['topStop'] != 'undefined' ? options['topStop']: $element.offset().top;
+        var bottomStop = typeof options['bottomStop'] != 'undefined' ? options['bottomStop']: Base.$document.height();
+        var hash = Base.hashString(selector);
+        var padding = 10;
+        hash = hash < 0? ( hash * (-1)): hash;
+        var time = (new Date).getTime();
+
+        $element.bottomReached = false;
+        $element.topReached = false;
+        $element.elementBottomReached = false;
+
+        var scroller = _.throttle(function(){
+            var elementTop = $element.offset().top;
+            var elementHeight = $element.height();
+            var elementBottom = elementTop + elementHeight;
+            var windowScrollTop = Base.$window.scrollTop();
+            var bottomReached = elementBottom >= bottomStop;
+            var topReached = elementTop < topStop;
+            Base.windowHeight = $(window).height();
+            Base.documentHeight = $(document).height();
+            console.log(bottomStop-elementHeight- initialTop);
+            if( Base.windowHeight >= $element.height() ){
+                if(!$element.bottomReached){
+                    if(elementTop <= windowScrollTop){
+                        $element.css({position: 'fixed'});
+                    }
+                    if(topReached){
+                        $element.css({position: 'absolute'});
+                    }
+                } else {
+                    if(windowScrollTop - padding < elementTop){
+                        $element.css({position: 'fixed',top:0});
+                        $element.bottomReached = false;
+                    }
+                }
+            } else {
+                if(Base.windowScrolledUp) {
+
+                } else {
+
+                }
+                /*if($element.elementTopReached && elementTop >= windowScrollTop && !Base.windowScrolledUp && !topReached) {
+                    $element.css({position: 'absolute',top: windowScrollTop - initialTop});
+                    $element.elementTopReached = false;
+                }
+                if(!$element.bottomReached && $element.elementBottomReached && Base.windowScrolledUp){
+                    var top = windowScrollTop - (elementHeight - Base.windowHeight);
+                    $element.css({position: 'absolute',top:top - initialTop + padding});
+                    $element.elementBottomReached = false;
+                } else {
+                    if(!$element.bottomReached && !$element.elementTopReached){
+                        var elementBottomReached = (elementBottom + padding) <= windowScrollTop + Base.windowHeight;
+                        if(elementBottomReached) {
+                            var fixedTop = Base.windowHeight - elementHeight - padding;
+                            $element.css({position: 'fixed',top: fixedTop});
+                            $element.elementBottomReached = true;
+                        } else {
+                            $element.elementBottomReached = false;
+                        }
+                        if(topReached){
+                            $element.css({position: 'absolute'});
+                        }
+                        if(bottomReached) {
+                            $element.css({position: 'absolute',top: bottomStop-elementHeight- initialTop });
+                            $element.bottomReached = true;
+                        }
+                    } else {
+                        if(windowScrollTop - padding < elementTop){
+                            $element.css({position: 'fixed',top:0});
+                            $element.bottomReached = false;
+                        }
+                    }
+                    var elementTopReached = (elementTop) >= windowScrollTop;
+                    if(elementTop > topStop && elementTopReached && Base.windowScrolledUp) {
+                        $element.css({position: 'fixed',top: 0});
+                        $element.elementTopReached = true;
+                    } else {
+                        $element.elementTopReached = false;
+                    }
+                }*/
+            }
+        },10);
+        var functionName = 'scroller_' + hash;
+        var interval = "interval_" + functionName;
+        if(typeof this[functionName] == 'function'){
+            Base.$window.off("scroll",this[functionName]);
+            clearInterval(this[interval]);
+        }
+        this[functionName] = scroller;
+        Base.$window.off("scroll",this[functionName]);
+        Base.$window.on("scroll",this[functionName]);
+        var  self = this;
+        this[interval] =  setInterval(function(){
+            if(!$(selector).length){
+                console.log('clearingElement in interval');
+                Base.$window.off("scroll",this[functionName]);
+                clearInterval(self[interval]);
+            }
+        },1000);
+    };
 });

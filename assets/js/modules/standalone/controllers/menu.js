@@ -63,6 +63,10 @@ define(['base'],function(Base){
                 Base.getViews([leftViewObj], this).done(function (categoryPanel) {
                     layout.setSubView(categoryPanel, 'category-panel');
                     layout.$('.category-panel').html(categoryPanel.render().el);
+                    Base.manageScroll({
+                        selector: '.category-panel'
+                    })
+
                 });
             } else {
                 layout.$('.menu-left').html(categoryPanel.render().el);

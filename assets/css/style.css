@@ -30,6 +30,7 @@
 	MENU ITEMS
 *****************/
 .menu-container{margin-top:65px;}
+.menu-container .category-panel{position: absolute;}
 .menu-item { padding-left:10px; padding-bottom:10px;}
 .menu-container .items-panel {margin-bottom:75px}
 .menu-item .item-container{
