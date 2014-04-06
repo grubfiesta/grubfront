@@ -6,12 +6,13 @@
         <div style="width:100%;">
             <div class="item-container">
                 <div class="pull-left text-desc">
-                    <p>House Pickles</p>
+                    <p><%= name %></p>
 
                     <div class="clearfix"></div>
-                    <span>Here is some description.. Did you know this?</span>
+                    <span><%= desc %></span>
                 </div>
-                <span class="pull-right text-price">&#8377; 4.95</span>
+                <% var price = _.first(prices) %>
+                <span class="pull-right text-price">&#8377; <%= price['value'] %></span>
             </div>
         </div>
     </div>

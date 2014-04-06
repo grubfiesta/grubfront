@@ -17,9 +17,15 @@ define(['base'],function(Base){
                     removeOld: true
                 }
                 Base.getViews([categoryViewObj],this).done(function(categoryView){
+                    categoryView.render();
                     container.append(categoryView.render().el);
                     if(typeof category.itemCollection != "undefined") {
-                        
+                        categoryView.renderItems(category.itemCollection).done(function(){
+                            container.append(categoryView.el);
+                        });
+                    } else {
+                        this.renderCategories(category.subCategories,categoryView.$el);
+                        container.append(categoryView.el);
                     }
                 });
             },this);

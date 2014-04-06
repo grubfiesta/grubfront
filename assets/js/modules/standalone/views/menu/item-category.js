@@ -6,23 +6,37 @@ define(['base'],function(Base){
             return this;
         },
         renderItems: function(items){
+            var def = $.Deferred();
             var container = this.$el.find(".row");
+            var  i = 0;
             items.each(function(item){
                 var itemViewObj = {
                     module: 'standalone',
                     name: 'menu/item',
                     uname: 'standalone.menu/item' + item.get('id'),
-                    removeOld: true
+                    removeOld: true,
+                    options: {
+                        model: item
+                    }
                 };
                 var itemView = Base.getViewInstance(itemViewObj);
                 if(!itemView){
-                    Base.getViews([itemViewObj],function(itemView){
+                    Base.getViews([itemViewObj],this).done(function(itemView){
                         container.append(itemView.render().el);
+                        def.notify("loaded");
                     });
                 } else {
                     container.append(itemView.render().el);
+                    def.notify("loaded");
                 }
             },this);
+            def.progress(function(){
+                i++;
+                if(i == items.length) {
+                    def.resolve();
+                }
+            });
+            return def;
         }
     });
     return v;

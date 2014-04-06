@@ -31,6 +31,7 @@
 *****************/
 .menu-container{margin-top:65px;}
 .menu-item { padding-left:10px; padding-bottom:10px;}
+.menu-container .items-panel {margin-bottom:75px}
 .menu-item .item-container{
 	cursor: pointer;
 	display: inline-block;
